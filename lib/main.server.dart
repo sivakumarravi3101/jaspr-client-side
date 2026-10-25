@@ -7,6 +7,7 @@ library;
 import 'package:jaspr/dom.dart';
 // Server-specific Jaspr import.
 import 'package:jaspr/server.dart';
+import 'package:jaspr_riverpod/jaspr_riverpod.dart';
 
 // Imports the [App] component.
 import 'app.dart';
@@ -51,9 +52,16 @@ void main() {
           href: 'styles.css',
           rel: 'stylesheet',
         ),
+        script(
+          content:
+              "try { if (localStorage.getItem('trade-theme') === 'dark') "
+              "document.documentElement.classList.add('dark'); } catch (_) {}",
+        ),
         script(src: "flutter_bootstrap.js", async: true),
       ],
-      body: App(),
+      body: ProviderScope(
+        child: const App(),
+      ),
     ),
   );
 }

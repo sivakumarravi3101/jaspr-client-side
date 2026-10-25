@@ -5,13 +5,11 @@
 // Generated with jaspr_builder
 
 import 'package:jaspr/server.dart';
-import 'package:trade_intelligence/components/counter.dart' as _counter;
-import 'package:trade_intelligence/components/header.dart' as _header;
-import 'package:trade_intelligence/components/trade_dashboard.dart'
-    as _trade_dashboard;
-import 'package:trade_intelligence/pages/about.dart' as _about;
-import 'package:trade_intelligence/pages/home.dart' as _home;
-import 'package:trade_intelligence/app.dart' as _app;
+import 'package:trade_intelligence/components/theme_toggle.dart'
+    as _theme_toggle;
+import 'package:trade_intelligence/features/products/presentation/export_products_page.dart'
+    as _export_products_page;
+import 'package:trade_intelligence/pages/overview_page.dart' as _overview_page;
 
 /// Default [ServerOptions] for use with your Jaspr project.
 ///
@@ -32,15 +30,16 @@ import 'package:trade_intelligence/app.dart' as _app;
 ServerOptions get defaultServerOptions => ServerOptions(
   clientId: 'main.client.dart.js',
   clients: {
-    _trade_dashboard.TradeDashboard:
-        ClientTarget<_trade_dashboard.TradeDashboard>('trade_dashboard'),
-    _about.About: ClientTarget<_about.About>('about'),
-    _home.Home: ClientTarget<_home.Home>('home'),
+    _theme_toggle.ThemeToggle: ClientTarget<_theme_toggle.ThemeToggle>(
+      'theme_toggle',
+    ),
+    _export_products_page.ExportProductsPage:
+        ClientTarget<_export_products_page.ExportProductsPage>(
+          'export_products_page',
+        ),
+    _overview_page.OverviewPage: ClientTarget<_overview_page.OverviewPage>(
+      'overview_page',
+    ),
   },
-  styles: () => [
-    ..._app.App.styles,
-    ..._counter.CounterState.styles,
-    ..._header.Header.styles,
-    ..._about.About.styles,
-  ],
+  styles: () => [],
 );

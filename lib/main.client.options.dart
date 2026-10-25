@@ -6,10 +6,12 @@
 
 import 'package:jaspr/client.dart';
 
-import 'package:trade_intelligence/components/trade_dashboard.dart'
-    deferred as _trade_dashboard;
-import 'package:trade_intelligence/pages/about.dart' deferred as _about;
-import 'package:trade_intelligence/pages/home.dart' deferred as _home;
+import 'package:trade_intelligence/components/theme_toggle.dart'
+    deferred as _theme_toggle;
+import 'package:trade_intelligence/features/products/presentation/export_products_page.dart'
+    deferred as _export_products_page;
+import 'package:trade_intelligence/pages/overview_page.dart'
+    deferred as _overview_page;
 
 /// Default [ClientOptions] for use with your Jaspr project.
 ///
@@ -29,11 +31,17 @@ import 'package:trade_intelligence/pages/home.dart' deferred as _home;
 /// ```
 ClientOptions get defaultClientOptions => ClientOptions(
   clients: {
-    'trade_dashboard': ClientLoader(
-      (p) => _trade_dashboard.TradeDashboard(),
-      loader: _trade_dashboard.loadLibrary,
+    'theme_toggle': ClientLoader(
+      (p) => _theme_toggle.ThemeToggle(),
+      loader: _theme_toggle.loadLibrary,
     ),
-    'about': ClientLoader((p) => _about.About(), loader: _about.loadLibrary),
-    'home': ClientLoader((p) => _home.Home(), loader: _home.loadLibrary),
+    'export_products_page': ClientLoader(
+      (p) => _export_products_page.ExportProductsPage(),
+      loader: _export_products_page.loadLibrary,
+    ),
+    'overview_page': ClientLoader(
+      (p) => _overview_page.OverviewPage(),
+      loader: _overview_page.loadLibrary,
+    ),
   },
 );
